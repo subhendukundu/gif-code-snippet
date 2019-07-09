@@ -1,7 +1,13 @@
 {
-  "name": "razzle-examples-with-heroku",
-  "version": "3.0.0",
+  "name": "gif-code-snippet",
+  "version": "1.0.0",
+  "main": "index.js",
   "license": "MIT",
+  "author": "Subhendu Kundu",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/subhendukundu/gif-code-snippet.git"
+  },
   "scripts": {
     "start": "razzle start",
     "build": "razzle build",
@@ -16,7 +22,6 @@
     "html2canvas": "^1.0.0-rc.3",
     "razzle": "^3.0.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-html-parser": "^2.0.2"
+    "react-dom": "^16.0.0"
   }
 }
