@@ -6,7 +6,7 @@
 
 ## [Demo](https://gif-code-snippet.herokuapp.com/)
 
-![demo gif](static/demo.gif)
+![demo gif](src/static/demo.gif)
 
 ## Features
 

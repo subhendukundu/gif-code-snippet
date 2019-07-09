@@ -1,10 +1,11 @@
 import React, { useState, useRef, createRef, useEffect } from 'react';
 import MonacoEditor from '@monaco-editor/react';
+import languageArray from '../../static/languages';
 
 
 function Editor() {
   const [theme, setTheme] = useState('dark');
-  const [language, setLanguage] = useState('javascript');
+  const [language, setLanguage] = useState('apex');
   const [isEditorReady, setIsEditorReady] = useState(false);
   const [code, setCode] = useState('');
   const [imageSrc, setImageSrc] = useState('');
@@ -56,6 +57,11 @@ function Editor() {
     }
   });
 
+  function modifyLanguageString(str) {
+    const tempStr = str.replace(/^./, str => str.toUpperCase()).replace('-', ' ');
+    return tempStr;
+  }
+
   function handleShowValue() {
     setLoading(true);
     counts.current = 1;
@@ -71,10 +77,12 @@ function Editor() {
   }
   
   function toggleLanguage(e) {
-    setLanguage(e);
+    const { value } = e.target;
+    setLanguage(value);
   }
 
   const Loader = () => (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>);
+  const renderLanguages = languageArray.map(item => <option key={item} value={item}>{item ? modifyLanguageString(item) : '' }</option>)
 
   return (
     <>
@@ -91,10 +99,12 @@ function Editor() {
             <span className="slider-text">Theme</span>
           </div>
           <div className="button-dropdown-container">
-            <select className="shadow-select">
-              <option>Choose language</option>
-              <option value="javascript">Javascript</option>
-              <option value="python">Python</option>
+            <select
+              className="shadow-select"
+              onChange={toggleLanguage}
+            >
+              <option value="" disabled>Choose language</option>
+              {renderLanguages}
             </select>
             <button
               className="shadow-button"
