@@ -23,9 +23,9 @@ function Editor() {
   }
 
   function renderGifImage() {
-    if (gifshot) {
+    if (window.gifshot) {
       const { clientHeight, clientWidth } = editorRef.current;
-      gifshot.createGIF({
+      window.gifshot.createGIF({
         'gifWidth': clientWidth,
         'gifHeight': clientHeight,
         'images': canvasCollections.current,

@@ -1,27 +1,11 @@
-import express from 'express';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-let app = require('./server').default;
+ReactDOM.render(<App />, document.getElementById('root'));
 
-if (module.hot) {
-  module.hot.accept('./server', function() {
-    console.log('🔁  HMR Reloading `./server`...');
-    try {
-      app = require('./server').default;
-    } catch (error) {
-      console.error(error);
-    }
-  });
-  console.info('✅  Server-side HMR Enabled!');
-}
-
-const port = process.env.PORT || 3000;
-
-export default express()
-  .use((req, res) => app.handle(req, res))
-  .listen(port, function(err) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(`> Started on port ${port}`);
-  });
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
