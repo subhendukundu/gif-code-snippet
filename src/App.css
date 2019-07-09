@@ -141,8 +141,10 @@ input:checked + .slider {
   padding: 10px;
   background-color: transparent;
   color: white;
-  -webkit-appearance:none;
   font-size: 12px;
+  -webkit-appearance:none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 option {

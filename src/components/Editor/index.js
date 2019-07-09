@@ -5,11 +5,12 @@ import languageArray from '../../static/languages';
 
 function Editor() {
   const [theme, setTheme] = useState('dark');
-  const [language, setLanguage] = useState('apex');
+  const [language, setLanguage] = useState('javascript');
   const [isEditorReady, setIsEditorReady] = useState(false);
   const [code, setCode] = useState('');
   const [imageSrc, setImageSrc] = useState('');
   const [ loading, setLoading ] = useState(false);
+  const [ notFirstSelected, makeFirstSelected ] = useState(false);
   const valueGetter = useRef();
   const counts = useRef(0);
   const canvasCollections = useRef([]);
@@ -34,6 +35,7 @@ function Editor() {
       }, (obj) => {
         if(!obj.error) {
           setLoading(false);
+          canvasCollections.current = [];
           const { image } = obj;
           counts.current = 0;
           setImageSrc(image);
@@ -78,7 +80,12 @@ function Editor() {
   
   function toggleLanguage(e) {
     const { value } = e.target;
-    setLanguage(value);
+    if (!notFirstSelected) {
+      makeFirstSelected(true);
+      setLanguage(value);
+    } else {
+      setLanguage(value);
+    }
   }
 
   const Loader = () => (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>);
@@ -103,7 +110,7 @@ function Editor() {
               className="shadow-select"
               onChange={toggleLanguage}
             >
-              <option value="" disabled>Choose language</option>
+              <option value="" disabled={notFirstSelected}>Choose language</option>
               {renderLanguages}
             </select>
             <button
@@ -135,7 +142,7 @@ function Editor() {
               download="snippet.gif"
               className="shadow-button download-button"
             >Download</a>
-            <img src={imageSrc} />
+            <img src={imageSrc} alt="snippent gif" />
           </div>
         )}
       </div>
