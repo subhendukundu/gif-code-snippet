@@ -118,7 +118,7 @@ function Editor() {
               <input type="checkbox" onChange={toggleTheme} />
               <span className="slider"></span>
             </label>
-            <span className="slider-text">Theme</span>
+            <span className="slider-text">Light theme</span>
           </div>
           <div className="button-dropdown-container">
             <select
