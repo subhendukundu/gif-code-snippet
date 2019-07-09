@@ -1,10 +1,14 @@
-import React, { useState, useRef, createRef, useEffect } from 'react';
+import React, { useState, useRef, useCallback, createRef, useEffect } from 'react';
 import MonacoEditor from '@monaco-editor/react';
 import languageArray from '../../static/languages';
 
 
+const MAX_HEIGHT = 50;
+const MIN_COUNT_OF_LINES = 9;
+
 function Editor() {
   const [theme, setTheme] = useState('dark');
+  const [height, setHeight] = useState(198);
   const [language, setLanguage] = useState('javascript');
   const [isEditorReady, setIsEditorReady] = useState(false);
   const [code, setCode] = useState('');
@@ -19,9 +23,20 @@ function Editor() {
   const html2canvas = require("html2canvas");
   const editorRef = createRef();
 
-  function handleEditorDidMount(_valueGetter) {
+  const handleEditorChange = useCallback(_ => {
+    const countOfLines = valueGetter.current().split("\n").length;
+    if (countOfLines >= MIN_COUNT_OF_LINES) {
+      const currentHeight = countOfLines * 22;
+      if (MAX_HEIGHT > currentHeight) {
+        setHeight(currentHeight);
+      }
+    }
+  }, []);
+
+  function handleEditorDidMount(_valueGetter, editorComponent) {
     setIsEditorReady(true);
     valueGetter.current = _valueGetter;
+    editorComponent.onDidChangeModelContent(handleEditorChange);
   }
 
   function renderGifImage() {
@@ -125,7 +140,7 @@ function Editor() {
         <div className="editor-loader-container">
           <div ref={editorRef}>
             <MonacoEditor
-              height={'50vh'}
+              height={height}
               theme={theme}
               language={language}
               value={code}
