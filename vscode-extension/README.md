@@ -1,6 +1,6 @@
 # gif-snippet
 
-![gif-snippet logo](https://github.com/subhendukundu/gif-code-snippet/blob/master/public/logo.png)
+![gif-snippet logo](https://raw.githubusercontent.com/subhendukundu/gif-code-snippet/master/public/logo.png)
 
 ![Fork](https://img.shields.io/github/forks/subhendukundu/gif-code-snippet.svg?label=Fork) ![Stars](https://img.shields.io/github/stars/subhendukundu/gif-code-snippet.svg?style=social)
 
@@ -8,7 +8,7 @@ Create gif and photos from your code
 
 ## [Demo](https://gif-code-snippet.herokuapp.com/)
 
-![demo mp4](https://github.com/subhendukundu/gif-code-snippet/blob/master/vscode-extension/public/demo.gif)
+![demo mp4](https://raw.githubusercontent.com/subhendukundu/gif-code-snippet/master/vscode-extension/public/demo.gif)
 
 ## Features
 
