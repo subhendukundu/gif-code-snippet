@@ -1,0 +1,223 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Security-Policy"
+        content="img-src vscode-resource: data: https:; script-src vscode-resource:; style-src 'unsafe-inline' vscode-resource:;" />
+    <style>
+        html {
+            box-sizing: border-box;
+            padding-top: 32px;
+        }
+
+        body {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
+
+        #snippet-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            resize: both;
+            background-color: #f2f2f2;
+            border-radius: 4px;
+            transition: opacity .4s;
+            width: calc(100% - 4rem);
+        }
+
+        #snippet {
+            overflow: hidden;
+            resize: both;
+            display: flex;
+            padding: 18px;
+            margin-top: 64px;
+            margin-bottom: 64px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.55) 0px 20px 68px;
+            width: calc(100% - 8rem);
+        }
+
+        #snippet>div {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            max-width: 100%;
+            white-space: pre-wrap !important;
+            word-break: break-all;
+        }
+
+        #snippet>div>div {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #save-container {
+            margin-top: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .obturateur {
+            width: 64px;
+            height: 64px;
+        }
+
+        .obturateur * {
+            transition: stroke .4s;
+        }
+
+        .obturateur:not(.filling) path {
+            opacity: .5;
+        }
+
+        .hide {
+            opacity: 0;
+        }
+
+        .switch input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .switch {
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            position: relative;
+            margin: 0 10px;
+        }
+
+        .theme-switch {
+            display: flex;
+            align-items: center;
+        }
+
+        .slider-text {
+            color: white;
+            font-size: 12px;
+        }
+
+        .slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-radius: 30px;
+            box-shadow: 0 0 0 2px #777;
+            cursor: pointer;
+            border: 4px solid transparent;
+            overflow: visible;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            width: 45%;
+            height: 100%;
+            background: #777;
+            border-radius: 30px;
+            transform: translateX(0px);
+            transition: .4s;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(18px);
+            background: white;
+        }
+
+        input:checked+.slider {
+            box-shadow: 0 0 0 2px white, 0 0 2px white;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+            }
+        }
+
+        .shadow-button {
+            width: 100px;
+            padding: 10px;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            border-color: #777;
+            background-color: transparent;
+            color: white;
+            animation: pulse .8s infinite;
+            font-size: 12px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .shadow-button:hover {
+            background-color: rgba(255, 255, 255, .2);
+            transition: 0.3s;
+        }
+
+        .action-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="action-container">
+        <div class="theme-switch">
+            <label class="switch">
+                <input type="checkbox" id="typeOfMedia" />
+                <span class="slider"></span>
+            </label>
+            <span class="slider-text">Photo</span>
+        </div>
+        <button id="download" class="shadow-button">
+            Download
+        </button>
+    </div>
+    <div id="snippet-container">
+        <div id="snippet"
+            style="color: #d8dee9;background-color: #2e3440;font-family: SFMono-Regular,Consolas,DejaVu Sans Mono,Ubuntu Mono,Liberation Mono,Menlo,Courier,monospace;font-weight: normal;font-size: 12px;line-height: 18px;white-space: pre;">
+            <div
+                style="color: #d8dee9;background-color: #2e3440;font-family: Input Mono;font-weight: normal;font-size: 12px;line-height: 18px;white-space: pre;">
+                <div class="element-id-0"><span style="color: #8fbcbb;">console</span><span
+                        style="color: #eceff4;">.</span><span style="color: #88c0d0;">log</span><span
+                        style="color: #d8dee9;">(</span><span style="color: #eceff4;">'</span><span
+                        style="color: #a3be8c;">0. Run command \`Create gif\`</span><span
+                        style="color: #eceff4;">'</span><span style="color: #d8dee9;">)</span> </div>
+                <div class="element-id-1"><span style="color: #8fbcbb;">console</span><span
+                        style="color: #eceff4;">.</span><span style="color: #88c0d0;">log</span><span
+                        style="color: #d8dee9;">(</span><span style="color: #eceff4;">'</span><span
+                        style="color: #a3be8c;">1. Select some code</span><span
+                        style="color: #eceff4;">'</span><span style="color: #d8dee9;">)</span></div>
+                <div class="element-id-2"><span style="color: #8fbcbb;">console</span><span
+                        style="color: #eceff4;">.</span><span style="color: #88c0d0;">log</span><span
+                        style="color: #d8dee9;">(</span><span style="color: #eceff4;">'</span><span
+                        style="color: #a3be8c;">2. Select gif or image from switch</span><span
+                        style="color: #eceff4;">'</span><span style="color: #d8dee9;">)</span></div>
+                <div class="element-id-3"><span style="color: #8fbcbb;">console</span><span
+                        style="color: #eceff4;">.</span><span style="color: #88c0d0;">log</span><span
+                        style="color: #d8dee9;">(</span><span style="color: #eceff4;">'</span><span
+                        style="color: #a3be8c;">3. Click the download button</span><span
+                        style="color: #eceff4;">'</span><span style="color: #d8dee9;">)</span> </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script src="./index.js"></script>
+    <script src="./gifshot.js"></script>
+    <script src="./dom2image.js"></script>
+</body>
+
+</html>

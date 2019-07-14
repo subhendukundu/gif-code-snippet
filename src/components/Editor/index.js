@@ -27,7 +27,6 @@ function Editor() {
     const countOfLines = valueGetter.current().split("\n").length;
     if (countOfLines >= MIN_COUNT_OF_LINES) {
       const currentHeight = countOfLines * 22;
-      console.log(currentHeight);
       if (MAX_HEIGHT > currentHeight) {
         setHeight(currentHeight);
       }
@@ -122,7 +121,7 @@ function Editor() {
               <input type="checkbox" onChange={toggleTheme} />
               <span className="slider"></span>
             </label>
-            <span className="slider-text">Light theme</span>
+            <span className="slider-text">Theme</span>
           </div>
           <div className="button-dropdown-container">
             <select
