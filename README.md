@@ -4,7 +4,7 @@
 
 ![Fork](https://img.shields.io/github/forks/subhendukundu/gif-code-snippet.svg?label=Fork) ![Stars](https://img.shields.io/github/stars/subhendukundu/gif-code-snippet.svg?style=social)
 
-Create gif and photos from your code
+Create gif and photos of your code
 
 ## [Demo](https://gif-code-snippet.herokuapp.com/)
 

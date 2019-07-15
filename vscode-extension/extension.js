@@ -17,9 +17,7 @@ const writeSerializedBlobToFile = (serializeBlob, fileName) => {
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	console.log('Congratulations, your extension "gif-snippet" is now active!');
 	const htmlPath = path.resolve(context.extensionPath, 'webview/index.html');
-	console.log(htmlPath);
 
 	let lastUsedImageUri = vscode.Uri.file(path.resolve(homedir(), 'Desktop/code.png'));
 	let lastUsedGifUri = vscode.Uri.file(path.resolve(homedir(), 'Desktop/code.gif'));
@@ -58,7 +56,6 @@ function activate(context) {
 
 		const fontFamily = vscode.workspace.getConfiguration('editor').fontFamily;
 		const bgColor = context.globalState.get('extension.bgColor', '#2e3440');
-		console.log(fontFamily, bgColor);
 		panel.webview.postMessage({
 			type: 'init',
 			fontFamily,
@@ -150,7 +147,6 @@ function activate(context) {
 
 	function setupSelectionSync() {
 		return vscode.window.onDidChangeTextEditorSelection(e => {
-			console.log(e);
 			if (e.selections[0] && !e.selections[0].isEmpty) {
 				vscode.commands.executeCommand('editor.action.clipboardCopyAction');
 				panel.postMessage({

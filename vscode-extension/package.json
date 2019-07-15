@@ -2,10 +2,10 @@
 	"name": "gif-code-snippet",
 	"displayName": "Gif Code Snippet",
 	"description": "Make gif snippet from code",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"repository": "https://github.com/subhendukundu/gif-code-snippet",
 	"engines": {
-		"vscode": "^1.36.0"
+		"vscode": "^1.26.0"
 	},
 	"icon": "public/logo.png",
 	"publisher": "subhendukundu",
@@ -31,7 +31,7 @@
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.6",
 		"@types/node": "^10.12.21",
-		"@types/vscode": "^1.36.0",
+		"@types/vscode": "^1.26.0",
 		"eslint": "^5.13.0",
 		"glob": "^7.1.4",
 		"mocha": "^6.1.4",
