@@ -10,8 +10,7 @@ ul {
     top: 45px;
     right: 0px;
     width: 150px;
-    background-color: white;
-    font-weight: bold;
+    background-color: #e3e3e3;
     position: absolute;
 
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -24,27 +23,27 @@ li a {
 li {
     padding: 8px 16px;
     cursor: pointer;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e8e8e8;
 }
 li:last-child {
     border-bottom: none;
 }
 li:hover {
-    background-color: #e5e5e5;
+    background-color: white;
     color: white;
 }
-.button{
+.button {
     width: 150px;
     height: 40px;
     text-align: left;
-    background-color: #777 ;
+    background-color: black ;
     border-radius :4px;
     font-size: 15px;
-    font-weight: bold;
     cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: white;
 }
-.button:before{
+.button:before {
     content:"";
     position:absolute;
     width:0px;
