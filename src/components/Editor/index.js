@@ -1,6 +1,7 @@
 import React, { useState, useRef, createRef, useEffect } from 'react';
 import MonacoEditor from '@monaco-editor/react';
 import languageArray from '../../static/languages';
+import Dropdown from '../dropdown/Dropdown.js';
 
 
 function Editor() {
@@ -59,11 +60,6 @@ function Editor() {
     }
   });
 
-  function modifyLanguageString(str) {
-    const tempStr = str.replace(/^./, str => str.toUpperCase()).replace('-', ' ');
-    return tempStr;
-  }
-
   function handleShowValue() {
     setLoading(true);
     counts.current = 1;
@@ -79,7 +75,9 @@ function Editor() {
   }
   
   function toggleLanguage(e) {
-    const { value } = e.target;
+    const elem = e.target;
+    const value = elem.getAttribute('value');
+    document.getElementsByClassName('llll')[0].innerHTML = value;
     if (!notFirstSelected) {
       makeFirstSelected(true);
       setLanguage(value);
@@ -89,7 +87,6 @@ function Editor() {
   }
 
   const Loader = () => (<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>);
-  const renderLanguages = languageArray.map(item => <option key={item} value={item}>{item ? modifyLanguageString(item) : '' }</option>)
 
   return (
     <>
@@ -106,13 +103,8 @@ function Editor() {
             <span className="slider-text">Theme</span>
           </div>
           <div className="button-dropdown-container">
-            <select
-              className="shadow-select"
-              onChange={toggleLanguage}
-            >
-              <option value="" disabled={notFirstSelected}>Choose language</option>
-              {renderLanguages}
-            </select>
+            <Dropdown disabled={notFirstSelected} onChange={toggleLanguage} />
+            </div>
             <button
               className="shadow-button"
               onClick={handleShowValue}
@@ -120,7 +112,6 @@ function Editor() {
             >
               Create GIF
             </button>
-          </div>
         </div>
         <div className="editor-loader-container">
           <div ref={editorRef}>
