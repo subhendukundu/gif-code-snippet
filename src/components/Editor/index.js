@@ -96,7 +96,7 @@ function Editor() {
   function toggleLanguage(e) {
     const elem = e.target;
     const value = elem.getAttribute('value');
-    document.getElementsByClassName('llll')[0].innerHTML = value;
+    document.getElementsByClassName('dropdown-button')[0].innerHTML = value;
     if (!notFirstSelected) {
       makeFirstSelected(true);
       setLanguage(value);

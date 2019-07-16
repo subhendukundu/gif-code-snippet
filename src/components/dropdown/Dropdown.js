@@ -35,11 +35,11 @@ showDropdownMenu(event) {
   }
 
   render() {
-    const renderLanguages = languageArray.map(item => <li onClick={this.props.onChange}><a href="#" value={item}>{item ? this.modifyLanguageString(item) : '' }</a></li>);
+    const renderLanguages = languageArray.map(item => <li key={item} value={item} onClick={this.props.onChange}><a href="javascript:void(0)" value={item} role="button">{item ? this.modifyLanguageString(item) : '' }</a></li>);
 
     return (
         <div  className="dropdown" >
-	        <button className="button llll" onClick={this.showDropdownMenu}> Languages </button>
+	        <button className="button dropdown-button" onClick={this.showDropdownMenu}> Languages </button>
 
           { this.state.displayMenu ? (
           <ul>
