@@ -1,11 +1,15 @@
-import React, { useState, useRef, createRef, useEffect } from 'react';
+import React, { useState, useRef, useCallback, createRef, useEffect } from 'react';
 import MonacoEditor from '@monaco-editor/react';
 import languageArray from '../../static/languages';
 import Dropdown from '../dropdown/Dropdown.js';
 
 
+const MAX_HEIGHT = 600;
+const MIN_COUNT_OF_LINES = 9;
+
 function Editor() {
   const [theme, setTheme] = useState('dark');
+  const [height, setHeight] = useState(198);
   const [language, setLanguage] = useState('javascript');
   const [isEditorReady, setIsEditorReady] = useState(false);
   const [code, setCode] = useState('');
@@ -20,13 +24,25 @@ function Editor() {
   const html2canvas = require("html2canvas");
   const editorRef = createRef();
 
-  function handleEditorDidMount(_valueGetter) {
+  const handleEditorChange = useCallback(_ => {
+    const countOfLines = valueGetter.current().split("\n").length;
+    if (countOfLines >= MIN_COUNT_OF_LINES) {
+      const currentHeight = countOfLines * 22;
+      if (MAX_HEIGHT > currentHeight) {
+        setHeight(currentHeight);
+      }
+    }
+  }, []);
+
+  function handleEditorDidMount(_valueGetter, editorComponent) {
     setIsEditorReady(true);
     valueGetter.current = _valueGetter;
+    editorComponent.onDidChangeModelContent(handleEditorChange);
   }
 
   function renderGifImage() {
-    if (window.gifshot) {
+    const { current } = canvasCollections;
+    if (window.gifshot && current.length) {
       const { clientHeight, clientWidth } = editorRef.current;
       window.gifshot.createGIF({
         'gifWidth': clientWidth,
@@ -38,7 +54,7 @@ function Editor() {
           setLoading(false);
           canvasCollections.current = [];
           const { image } = obj;
-          counts.current = 0;
+          counts.current = -1;
           setImageSrc(image);
         }
       });
@@ -49,7 +65,7 @@ function Editor() {
     if (counts.current > 0 && counts.current === totalCount.current) {
       renderGifImage();
     }
-    if (counts.current > 0 && counts.current < totalCount.current) {
+    if (counts.current > -1 && counts.current < totalCount.current) {
       counts.current = counts.current + 1;
       const stringArr = actualString.current.split(/\n/g);
       const newString = stringArr.splice(0, counts.current).join('\n');
@@ -60,14 +76,17 @@ function Editor() {
     }
   });
 
-  function handleShowValue() {
-    setLoading(true);
-    counts.current = 1;
+
+  function handleCreateGif() {
+    counts.current = 0;
     const stringToModify = actualString.current = valueGetter.current();
-    const stringArr = stringToModify.split(/\n/g);
-    totalCount.current = stringArr.length;
-    const newString = stringArr.splice(0, counts.current).join('\n');
-    setCode(newString);
+    if (stringToModify.length) {
+      setLoading(true);
+      const stringArr = stringToModify.split(/\n/g);
+      totalCount.current = stringArr.length;
+      const newString = stringArr.splice(0, counts.current).join('\n');
+      setCode(newString);
+    }
   }
   
   function toggleTheme(e) {
@@ -107,7 +126,7 @@ function Editor() {
             </div>
             <button
               className="shadow-button"
-              onClick={handleShowValue}
+              onClick={handleCreateGif}
               disabled={!isEditorReady}
             >
               Create GIF
@@ -116,7 +135,7 @@ function Editor() {
         <div className="editor-loader-container">
           <div ref={editorRef}>
             <MonacoEditor
-              height={'50vh'}
+              height={height}
               theme={theme}
               language={language}
               value={code}
@@ -127,7 +146,7 @@ function Editor() {
           {loading && <div className="loader-wrapper"><Loader /></div>}
         </div>
         {imageSrc && (
-          <div>
+          <div className="output-container">
             <a
               href={imageSrc}
               download="snippet.gif"

@@ -147,6 +147,12 @@ input:checked + .slider {
   appearance: none;
 }
 
+.output-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 option {
   background-color: black;
   color: white;

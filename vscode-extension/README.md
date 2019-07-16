@@ -1,25 +1,24 @@
 # gif-snippet
 
-![gif-snippet logo](public/logo.png)
+![gif-snippet logo](https://raw.githubusercontent.com/subhendukundu/gif-code-snippet/master/public/logo.png)
 
 ![Fork](https://img.shields.io/github/forks/subhendukundu/gif-code-snippet.svg?label=Fork) ![Stars](https://img.shields.io/github/stars/subhendukundu/gif-code-snippet.svg?style=social)
 
-Create gif and photos of your code
+Create gif and photos from your code
 
 ## [Demo](https://gif-code-snippet.herokuapp.com/)
 
-![demo gif](src/static/demo.gif)
+![demo mp4](https://raw.githubusercontent.com/subhendukundu/gif-code-snippet/master/vscode-extension/public/demo.gif)
 
 ## Features
 
 - Type down or paste code and make a gif out of it
-- Choose programming language 
-- Change themes just like vscode, light and dark
-- View gif and download
+- Change gif or photo as needed
+- View gif/photo and download
 
 ## Motivation
 
-There is a well-known web technology based image share called [Carbon](https://dawnlabs.io/carbon)  that powers to create and share beautiful images of your source code. But there are only few to create gif out of pasted code.
+There is a well-known web technology based image share called [Carbon](https://dawnlabs.io/carbon) and [Polacode](https://github.com/octref/polacode) that powers to create and share beautiful images of your source code. But there are only few to create gif out of pasted code.
 With this solution, you can just type or paste your code which will crate a gif snippet out of it.
 
 ## Contribute
