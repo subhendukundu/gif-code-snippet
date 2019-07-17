@@ -9,7 +9,7 @@ Create gif and photos of your code
 ## [Demo](https://gif-code-snippet.herokuapp.com/)
 
 ![demo gif](src/static/demo.gif)
-
+[Vscode extention](https://marketplace.visualstudio.com/items?itemName=subhendukundu.gif-code-snippet)
 ## Features
 
 - Type down or paste code and make a gif out of it
