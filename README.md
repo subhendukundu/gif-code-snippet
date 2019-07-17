@@ -1,4 +1,4 @@
-# gif-snippet
+# gif-code-snippet
 
 ![gif-snippet logo](public/logo.png)
 

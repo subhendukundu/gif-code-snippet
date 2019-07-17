@@ -1,12 +1,12 @@
-# gif-snippet
+# gif-code-snippet
 
 ![gif-snippet logo](https://raw.githubusercontent.com/subhendukundu/gif-code-snippet/master/public/logo.png)
 
 ![Fork](https://img.shields.io/github/forks/subhendukundu/gif-code-snippet.svg?label=Fork) ![Stars](https://img.shields.io/github/stars/subhendukundu/gif-code-snippet.svg?style=social)
 
-Create gif and photos from your code
+Create gif and photos of your code
 
-## [Demo](https://gif-code-snippet.herokuapp.com/)
+## [Demo](https://marketplace.visualstudio.com/items?itemName=subhendukundu.gif-code-snippet)
 
 ![demo mp4](https://raw.githubusercontent.com/subhendukundu/gif-code-snippet/master/vscode-extension/public/demo.gif)
 
