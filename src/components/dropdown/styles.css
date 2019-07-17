@@ -3,7 +3,7 @@
     display: inline-block;
     background-color: #000;
 }
-ul {
+.dropdown-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -12,23 +12,25 @@ ul {
     width: 150px;
     background-color: #e3e3e3;
     position: absolute;
+    max-height: 300px;
+    overflow: scroll;
 
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-li a {
+.dropdown-list-items a {
     color: #000;
     text-decoration: none;
 }
-li {
+.dropdown-list-items {
     padding: 8px 16px;
     cursor: pointer;
     border-bottom: 1px solid #e8e8e8;
 }
-li:last-child {
+.dropdown-list-items:last-child {
     border-bottom: none;
 }
-li:hover {
+.dropdown-list-items:hover {
     background-color: white;
     color: white;
 }

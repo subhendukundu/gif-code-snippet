@@ -1,62 +1,46 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import languageArray from '../../static/languages';
 import './styles.css';
 
 
-class Dropdown extends React.Component {
-constructor(){
- super();
+function Dropdown(props) {
 
- this.state = {
-       displayMenu: false,
-     };
-
-  this.showDropdownMenu = this.showDropdownMenu.bind(this);
-  this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
-
-};
-
-showDropdownMenu(event) {
-    event.preventDefault();
-    this.setState({ displayMenu: true }, () => {
-    document.addEventListener('click', this.hideDropdownMenu);
-    });
+  const [ displayMenu, setdisplayMenu ] = useState(false);
+  
+  const onChooseLanguage = (e) => {
+    e.preventDefault()
+    props.onChange(e);
+    setdisplayMenu(false);
   }
 
-  hideDropdownMenu() {
-    this.setState({ displayMenu: false }, () => {
-      document.removeEventListener('click', this.hideDropdownMenu);
-    });
-  }
+  function showDropdownMenu(e) {
+      e.preventDefault();
+      if (displayMenu) {
+        setdisplayMenu(false);
+      } else {
+        setdisplayMenu(true);
+      }
+    }
 
-  modifyLanguageString(str) {
-    const tempStr = str.replace(/^./, str => str.toUpperCase()).replace('-', ' ');
-    return tempStr;
-  }
+    function modifyLanguageString(str) {
+      const tempStr = str.replace(/^./, str => str.toUpperCase()).replace('-', ' ');
+      return tempStr;
+    }
 
-  render() {
-    const renderLanguages = languageArray.map(item => <li key={item} value={item} onClick={this.props.onChange}><a href="javascript:void(0)" value={item} role="button">{item ? this.modifyLanguageString(item) : '' }</a></li>);
+  const renderLanguages = languageArray.map(item => <li className="dropdown-list-items" key={item} value={item} onClick={onChooseLanguage}><a href="#" value={item} role="button">{item ? modifyLanguageString(item) : '' }</a></li>);
 
-    return (
-        <div  className="dropdown" >
-	        <button className="button dropdown-button" onClick={this.showDropdownMenu}> Languages </button>
-
-          { this.state.displayMenu ? (
-          <ul>
-            {renderLanguages}
-          </ul>
-        ):
-        (
-          null
-        )
-        }
-
-	      </div>
-
-    );
-  }
-
-
+  return (
+        <div className="dropdown" >
+	        <button className="button dropdown-button" onClick={showDropdownMenu}>
+            Languages
+          </button>
+          { displayMenu ? (
+            <ul className="dropdown-list">
+              {renderLanguages}
+            </ul> ): null
+          }
+        </div>
+  );
 }
 
 

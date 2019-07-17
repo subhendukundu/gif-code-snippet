@@ -1,6 +1,5 @@
 import React, { useState, useRef, useCallback, createRef, useEffect } from 'react';
 import MonacoEditor from '@monaco-editor/react';
-import languageArray from '../../static/languages';
 import Dropdown from '../dropdown/Dropdown.js';
 
 
