@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, createRef, useEffect } from 'react';
 import MonacoEditor from '@monaco-editor/react';
-import Dropdown from '../dropdown/Dropdown.js';
+import Dropdown from '../Dropdown/Dropdown.js';
 
 
 const MAX_HEIGHT = 600;
