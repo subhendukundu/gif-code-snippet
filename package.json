@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^1.0.2",
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "html2canvas": "^1.0.0-rc.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
